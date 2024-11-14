@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRACTION</title>
+    <link rel="stylesheet" href="css/traction.css">
+    <script>
+         function calculate() {
+    try {
+        // Get values from inputs
+        const value1 = parseFloat(document.getElementById('value_entry1').value);
+        const value2 = parseFloat(document.getElementById('value_entry2').value);
+        const value3 = parseFloat(document.getElementById('value_entry3').value);
+        
+        // ตั้งค่า standard_value (ในตัวอย่างนี้ใช้ค่าคงที่ แต่คุณสามารถรับค่าจาก input ได้)
+        const standard_value = parseFloat(document.getElementById('UUCSetting_var').value);
+
+        // Calculate uncertainty
+        const values = [value1, value2, value3];
+        const UU1 = standardDeviation(values);
+        const U1 = UU1 / Math.sqrt(3);
+
+        const UU2 = 0 / 2;
+        const U2 = UU2 / Math.sqrt(3);
+        const UU3 = 0 / 2;
+        const U3 = UU3 / Math.sqrt(3);
+
+        const average = (value1 + value2 + value3) / 3;
+        const UU4 = (average * 0);
+        const U4 = UU4 / Math.sqrt(3);
+
+        const U5 = 0 / 2;
+        const U6 = 0* Math.sqrt(3);
+
+        const SUM = Math.sqrt((U1 ** 2) + (U2 ** 2) + (U3 ** 2) + (U4 ** 2) + (U5 ** 2) + (U6 ** 2));
+
+        // คำนวณค่าต่างๆ สำหรับตาราง
+        const StandardReading = average;
+        const error = StandardReading - standard_value;
+        const percentError = Math.abs(error * (100 / standard_value));
+        
+        // แสดงผลในตาราง
+        document.getElementById('standardSetting').innerText = `${standard_value.toFixed(2)} °C`;
+        document.getElementById('uucReading').innerText = `${StandardReading.toFixed(2)} °C`;
+        document.getElementById('error').innerText = `${error.toFixed(2)} °C`;
+        document.getElementById('percentError').innerText = `${percentError.toFixed(2)} %`;
+        document.getElementById('uncertainty').innerText = `±${SUM.toFixed(2)} °C`;
+
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Please enter valid numbers in all fields');
+    }
+}
+
+function standardDeviation(values, usePopulation = false) {
+    const mean = values.reduce((acc, val) => acc + val, 0) / values.length;
+    const sumOfSquaredDifferences = values.reduce((acc, val) => acc + (val - mean) ** 2, 0);
+    return Math.sqrt(sumOfSquaredDifferences / (values.length - (usePopulation ? 0 : 1)));
+}
+    </script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://lh4.googleusercontent.com/proxy/vfQQE8pAlnjy3cphmy9XmtmVjx-4Qt1hjPmw1Tgi7LmdaD9ksFkz4MZr8G--teNH_ONn" alt="BME Logo" class="logo">
+            <h1>CERTIFICATE OF CALIBRATION<br>TRACTION</h1>
+        </div>
+
+        <div class="form-section">
+            <div class="form-group">
+                <label>CLIENT:</label>
+                <input type="text">
+            </div>
+            <div class="form-group">
+                <label>LOCATION:</label>
+                <input type="text" >
+            </div>
+            <div class="form-group">
+                <label>DEPARTMENT:</label>
+                <input type="text" >
+            </div>
+            <div class="form-group">
+                <label>EQUIPMENT NAME:</label>
+                <input type="text" >
+            </div>
+            <div class="form-group">
+                <label>EQUIPMENT ID NO.:</label>
+                <input type="text" >
+            </div>
+            <div class="form-group">
+                <label>MANUFACTURER:</label>
+                <input type="text">
+            </div>
+            <div class="form-row">
+                <div class="form-group half">
+                    <label>MODEL:</label>
+                    <input type="text">
+                </div>
+                <div class="form-group half">
+                    <label>SERIAL NO.:</label>
+                    <input type="text" >
+                </div>
+            </div>
+            <div class="form-row1">
+                <div class="form-group half2">
+                    <label for="dateInput">DATE OF CALIBRATION :</label>
+                    <input type="date" id="dateInput" name="date">
+                </div>
+                
+                <div class="form-group half2">
+                    <label for="dateInput">DUE DATE:</label>
+                    <input type="date" id="dateInput" name="date">
+                </div>
+            </div>
+
+            <div class="environment-section">
+                <label>ENVIRONMENT:</label>
+                <div class="env-details">
+                    <div class="env-row1">
+                        <span>AMBIENT TEMPERATURE</span>
+                        <input type="text" value="25.0">
+                        <span class="unit">°C</span>
+                    </div>
+                    <div class="env-row2">
+                        <span>RELATIVE HUMIDITY</span>
+                        <input type="text" value="52.0">
+                        <span class="unit">°C</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row2">
+                <div class="form-group half1">
+                    <label>PERFORM BY:</label>
+                    <input type="text">
+                </div>
+                <div class="form-group half1">
+                    <label>QA BY:</label>
+                    <input type="text">
+                </div>
+            </div>
+        </div>
+        <div class="result-section">
+            <h2>RESULT OF CALIBRATION</h2>
+            <div class="certificate-no">
+                <label>Certificate No.:</label>
+                <input type="text">
+            </div>
+
+            <div class="readings">
+                <div class="reading-inputs">
+                    <div class="read-group">
+                        <label>READ 1:</label>
+                        <input type="text" id="value_entry1" onchange="calculate()">
+                    </div>
+                    <div class="read-group">
+                        <label>READ 2:</label>
+                        <input type="text" id="value_entry2" onchange="calculate()">
+                    </div>
+                    <div class="read-group">
+                        <label>READ 3:</label>
+                        <input type="text" id="value_entry3" onchange="calculate()">
+                    </div>
+                </div>
+            </div>           
+            </div>
+
+            <table class="result-table">
+                <thead>
+                    <tr>
+                        <th>Standard Setting</th>
+                        <th>UUC* Reading</th>
+                        <th>Error</th>
+                        <th>% Error</th>
+                        <th>Uncertainty</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="standardSetting">kgs</td>
+                        <td id="uucReading">kgs</td>
+                        <td id="error">kgs</td>
+                        <td id="percentError">%</td>
+                        <td id="uncertainty">kgs</td>
+                    </tr>
+                </tbody>
+                <div class="input-group2">
+                    <select id="UUCSetting_var">
+                        <option value="" disabled selected>UUC*SETTING</option>
+                        <option value="30">30 kgs </option>
+                        <option value="60">60 kgs </option>
+                        <option value="90">90 kgs </option>
+     
+                    </select>
+                </div>
+                <div class="print-button">
+                    <button class="button">Print</button>
+                </div>
+                
+                <script>
+                    const button = document.querySelector("button");
+                
+                    button.addEventListener("click", () => {
+                        window.print(); /* Triggers the print dialog */
+                    });
+                </script> 
+
+            
+            </table>
+        </div>
+        <div class="link">
+            <a href="traction1.html">
+                <img src="image/png-clipart-gear-day-of-the-homeland-angle-text-removebg-preview.png" alt="Settings" class="gear-icon">
+            </a>
+        </div>
+        
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+
+
+
+

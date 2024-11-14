@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calibration Results by Biomedical Engineering</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script>
+        function navigateToPage(selectElement) {
+            const selectedValue = selectElement.value;
+
+            // นำทางตามค่าที่เลือก
+            switch (selectedValue) {
+                case "oxygen_flow_meter":
+                    window.location.href = "oxygen_flow_meter.html";
+                    break;
+                case "infant_incubator":
+                    window.location.href = "infant_incubator.html";
+                    break;
+                case "syringe_pump":
+                    window.location.href = "syringe_pump.html";
+                    break;
+                case "traction":
+                    window.location.href = "traction.html";
+                    break;
+                default:
+                    break;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="wrapper">
+        <form action="">
+            <h1>CALIBRATION</h1>
+        </form>
+        <p>DEVICE</p>
+        <select class="select" onchange="navigateToPage(this)">
+            <option value="" disabled selected>Select a Medical device</option> <!-- ตัวเลือกเริ่มต้น -->
+            <option value="oxygen_flow_meter">OXYGEN FLOW METER</option>
+            <option value="infant_incubator">INFANT INCUBATOR</option>
+            <option value="syringe_pump">SYRINGE PUMP</option>
+            <option value="traction">TRACTION</option>
+        </select>
+        </p>
+    </div>
+</body>
+</html>

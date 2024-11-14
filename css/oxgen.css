@@ -1,0 +1,396 @@
+/* Print Settings */
+@page {
+    size: A4 portrait;
+    margin: 5mm;
+}
+
+/* Base Styles */
+body {
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    font-family: Arial, sans-serif;
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 20mm;
+    margin: 20px auto;
+    background: white;
+    box-sizing: border-box;
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+}
+
+.header h1 {
+    flex: 1;
+    font-size: 24px;
+    text-align: center;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Form Styles */
+.form-section {
+    margin-bottom: 30px;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    min-width: 180px;
+    font-weight: normal;
+}
+
+.form-group input {
+    flex: 1;
+    height: 30px;
+    border: none;
+    background: #f5f5f5;
+    padding: 5px 10px;
+}
+
+/* Split Row Styles */
+.form-row {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+/* Form Row Layout */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 15px;
+}
+
+/* ส่วนของ MODEL */
+.form-group.half:first-child {
+    display: flex;
+    align-items: center;
+}
+
+.form-group.half:first-child label {
+    min-width: 180px;
+}
+
+/* ส่วนของ SERIAL NO. */
+.form-group.half:last-child {
+    display: flex;
+    align-items: center;
+    padding-left: 0; /* ลบ padding ซ้าย */
+}
+
+.form-group.half:last-child label {
+    min-width: 30px; /* ปรับความกว้างของ label */
+    margin-right: 10px; /* เพิ่มระยะห่างระหว่าง label และ input */
+}
+
+.form-group.half:last-child input {
+    flex: 0 1 200px; /* กำหนดความกว้างแบบยืดหยุ่นแต่ไม่เกิน 200px */
+}
+
+/* Environment Section */
+.environment-section {
+    margin: 30px 0;
+}
+
+.environment-section > label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.env-details {
+    display: flex;
+    gap: 60px;
+}
+
+.env-row1, .env-row2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.env-row1 input, .env-row2 input {
+    width: 60px;
+    height: 30px;
+    text-align: center;
+    background: #f5f5f5;
+    border: none;
+}
+
+/* Result Section */
+.result-section h2 {
+    color: #8b0000;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px 0;
+    border-top: 1px solid #8b0000;
+    border-bottom: 1px solid #8b0000;
+    margin: 30px 0;
+}
+
+.certificate-no {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.certificate-no input {
+    width: 150px;
+    height: 30px;
+    background: #f5f5f5;
+    border: none;
+}
+
+/* Reading Section */
+.reading-inputs {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 700px;
+    margin: 30px auto;
+}
+
+.read-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.read-group label {
+    white-space: nowrap;
+    width: 70px;
+}
+
+.read-group input {
+    width: 100px;
+    height: 30px;
+    background: #f5f5f5;
+    border: none;
+    padding: 0 10px;
+}
+
+* Table and Controls Section */
+.table-section {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Table Styles */
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px; /* ลดระยะห่างระหว่างตารางกับ select */
+}
+
+.result-table th {
+    background: #1a1a1a;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #000;
+}
+
+.result-table td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #000;
+    background: #fff;
+}
+
+/* UUC Setting Styles */
+.input-group2 {
+    display: flex;
+    justify-content: flex-end; /* จัดชิดขวา */
+    margin-bottom: 15px; /* เพิ่มระยะห่างจาก select ถึงปุ่มปริ้น */
+}
+
+.input-group2 select {
+    width: 150px;
+    height: 30px;
+    padding: 0 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+@page {
+    size: A4 portrait;
+}
+
+p {
+    font-size: 1.5em;
+}
+
+/* Print Button Styles */
+.print-button {
+    position: fixed; /* Fixes the button to the page */
+    bottom: 20px; /* Position the button 20px from the bottom */
+    right: 20px;  /* Position the button 20px from the right */
+    z-index: 1000; /* Ensures that the button stays on top of other elements */
+}
+
+/* Button Styling */
+.button {
+    background: transparent;
+    color: #000;
+    padding: 8px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    border: 1px solid #ddd; /* Border styling */
+    transition: all 0.2s ease;
+}
+
+.button:active {
+    transform: translateY(1px);
+}
+
+/* Hover Effects */
+.button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Gear Icon */
+.gear-icon {
+    width: 60px; /* ลดขนาดจาก 40px */
+    height: 50px;
+    transition: transform 0.3s ease;
+}
+
+/* Gear Icon */
+.gear-icon {
+    width: 60px;
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+/* Link Styles */
+.link a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+/* Hover Animation */
+.link a:hover .gear-icon {
+    transform: rotate(90deg);
+}
+
+.link a:hover {
+    background: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Active State */
+.link a:active {
+    transform: scale(0.95);
+}
+
+/* Print Media Styles */
+@media print {
+    /* ซ่อนส่วนที่ไม่ต้องการพิมพ์ */
+    .print-button,
+    .input-group2,
+    button,
+    select {
+        display: none !important;
+    }
+
+    /* ปรับแต่งหน้าเอกสาร */
+    body {
+        background: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .container {
+        width: 100%;
+        margin: 0;
+        padding: 20mm;
+        box-shadow: none;
+        background: none;
+    }
+
+    /* ปรับแต่งตารางสำหรับการพิมพ์ */
+    .table-section {
+        margin-bottom: 0;
+        page-break-inside: avoid;
+        background: none;
+    }
+
+    .result-table {
+        border: 1px solid #000;
+        background: none;
+    }
+
+    .result-table th {
+        background: none !important;
+        color: #000 !important;
+        border: 1px solid #000;
+    }
+
+    .result-table td {
+        background: none !important;
+        border: 1px solid #000;
+    }
+
+    /* กำหนดจุดตัดหน้า */
+    .page-break {
+        page-break-before: always;
+    }
+
+    /* ปรับแต่งลิงก์ */
+    a {
+        text-decoration: none;
+    }
+    
+    a[href]:after {
+        content: none !important;
+    }
+    .nav-buttons {
+        display: none !important;
+    }
+    .link {
+        display: none !important;
+    }
+}

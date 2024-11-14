@@ -1,0 +1,199 @@
+@page {
+    size: A4 portrait;
+    margin: 5mm;
+}
+
+.container {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 20mm;
+    margin: 20px auto;
+    background: white;
+    box-sizing: border-box;
+}
+
+/* Table Container */
+.safety-test {
+    width: 100%;
+    max-width: 800px; /* Adjusted to fit A4 width */
+    margin: 10px auto; /* Centers the table on the page */
+    border-collapse: collapse;
+    border: 2px solid black; /* Border around the table */
+    font-family: Arial, sans-serif;
+    font-size: 10px; /* Reduced font size for fitting */
+    padding: 10px; /* Padding around the entire table container */
+    box-sizing: border-box; /* Ensures padding doesn't affect overall table width */
+}
+
+/* Table Cells */
+.safety-test td {
+    border: 1px solid black; /* Border around each cell */
+    padding: 4px; /* Reduced padding for smaller font */
+    vertical-align: middle;
+}
+
+/* Header */
+.safety-test .header td {
+    font-weight: bold;
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 8px; /* Adjusted padding */
+}
+
+/* Test Result Row */
+.safety-test .test-result td {
+    background-color: #f8f8f8;
+}
+
+.safety-test .test-result label {
+    margin-right: 8px;
+}
+
+/* Section Headers */
+.safety-test .section-header {
+    font-weight: bold;
+    background-color: #f8f8f8;
+}
+
+/* P, F, N Columns */
+.safety-test td:nth-child(1),
+.safety-test td:nth-child(2),
+.safety-test td:nth-child(3) {
+    text-align: center;
+    width: 20px; /* Narrowed for better fit */
+}
+
+/* Description Column */
+.safety-test td:nth-child(4) {
+    min-width: 200px; /* Adjusted to fit within A4 */
+}
+
+/* Comment Column */
+.safety-test td:nth-child(5) {
+    width: 120px; /* Adjusted to fit within A4 */
+}
+
+/* Remark Section */
+.safety-test .remark {
+    background-color: #f8f8f8;
+}
+
+.safety-test .remark strong {
+    font-weight: bold;
+}
+
+/* Legend */
+.safety-test .legend td {
+    text-align: left;
+    font-size: 9px; /* Slightly smaller for fitting */
+    padding: 3px 5px;
+    background-color: #f8f8f8;
+}
+
+/* Checkbox Styling */
+.safety-test input[type="checkbox"] {
+    margin-right: 3px;
+}
+
+/* Hover Effect */
+.safety-test tr:hover:not(.header):not(.section-header):not(.remark):not(.legend) {
+    background-color: #f8f8f8;
+}
+
+/* Gear Icon */
+.gear-icon {
+    width: 60px;
+    height: 40px;
+    transition: transform 0.3s ease;
+}
+
+/* Link Styles */
+.link a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+/* Hover Animation */
+.link a:hover .gear-icon {
+    transform: rotate(90deg);
+}
+
+.link a:hover {
+    background: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Active State */
+.link a:active {
+    transform: scale(0.95);
+}
+/* Container Styling */
+.container {
+    position: relative; /* Ensures that the button is positioned relative to this container */
+    width: 210mm;
+    min-height: 297mm;
+    margin-right: 297mm;
+    padding: 20mm;
+    margin: 20px auto;
+    background: white;
+    box-sizing: border-box;
+}
+
+/* Style for the print button */
+.button {
+    position: absolute;
+    bottom: 10px; /* Moves the button to the bottom */
+    right: 20px;  /* Moves the button to the right */
+    display: flex;
+    justify-content: center;
+}
+
+/* Button Styling */
+button {
+    font-size: 1em;
+    font-weight: 20;
+    padding: 5px 10px;  /* Reduced padding to make the button narrower */
+    color: #000000;
+    background-color: #ffffff;
+    border: 1px solid #000000; 
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff9900;
+}
+
+button:active {
+    background-color: #7f5700ee;
+}
+
+
+
+/* Print Styles */
+@media print {
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    .safety-test {
+        margin: 0;
+        width: 100%;
+        font-size: 9px; /* Slightly smaller font for printing */
+    }
+    .link, .button {
+        display: none; /* Hide elements not needed in print */
+    }
+}
